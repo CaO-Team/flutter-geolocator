@@ -81,6 +81,10 @@ class LocationManagerClient implements LocationClient, LocationListenerCompat {
 
       final List<String> enabledProviders = locationManager.getProviders(true);
 
+	  if (accuracy == LocationAccuracy.medium && enabledProviders.contains(LocationManager.NETWORK_PROVIDER) {
+		   return LocationManager.NETWORK_PROVIDER;
+	  }
+
       if (accuracy == LocationAccuracy.lowest) {
           return LocationManager.PASSIVE_PROVIDER;
       } else if (enabledProviders.contains(LocationManager.FUSED_PROVIDER) && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
